@@ -24,14 +24,11 @@ namespace argument
             Prompt eight = new Prompt("The Missus: Thanks for listening. I felt like a chicken sandwich today so I ordered one in,\nand Becky had the NERVE to tell me I should've stuck with a salad. Can you believe that?!");
             Prompt nine = new Prompt("You say \"Something snarky, I assume.\" The Missus: Oh, like THAT you mean?\n The Missus has given you an out..");
             Prompt ten = new Prompt("The Missus: I felt like a chicken sandwich today so I ordered one in,\nand Becky had the NERVE to tell me I should've stuck with a salad. Can you believe that?!");
-            Prompt eleven = new Prompt("");
-            Prompt twelve = new Prompt("");
-            Prompt thir = new Prompt("");
-            Prompt fourteen = new Prompt("");
+            Prompt eleven = new Prompt("The author would like to inform you, the plot has become too complex to continue. In honor of George R.R Martin,\n the next chapter in this story will be released in 7 years, give or take. Thanks for playing!");
+
 
 
             Item Out = new Item("Out", "\"No Strings Attached\"");
-            Item Wit = new Item("Wit", "Are you SURE you want to use this right now?");
             //2good, 3bad -- start
             //4 -- lose 7-- ovverreacting lose
             //5,6 --continue
@@ -47,13 +44,30 @@ namespace argument
             three.Choices.Add(Response.question, six);
             three.Choices.Add(Response.statement, seven);
             three.Choices.Add(Response.silence, four);
+            five.Choices.Add(Response.listen, eleven);
+            five.Choices.Add(Response.question, eleven);
+            five.Choices.Add(Response.statement, eleven);
+            five.Choices.Add(Response.silence, eleven);
 
+            six.Choices.Add(Response.listen, eleven);
+            six.Choices.Add(Response.question, eleven);
+            six.Choices.Add(Response.statement, eleven);
+            six.Choices.Add(Response.silence, eleven);
+
+            eight.Choices.Add(Response.listen, eleven);
+            eight.Choices.Add(Response.question, eleven);
+            eight.Choices.Add(Response.statement, eleven);
+            eight.Choices.Add(Response.silence, eleven);
+
+            ten.Choices.Add(Response.listen, eleven);
+            ten.Choices.Add(Response.question, eleven);
+            ten.Choices.Add(Response.statement, eleven);
+            ten.Choices.Add(Response.silence, eleven);
 
 
 
             nine.Items.Add(Out);
             CurrentUser = new User();
-            CurrentUser.Inventory.Add(Wit);
         }
         public void Run()
         {
@@ -124,6 +138,13 @@ namespace argument
             if (CurrentPrompt.Description.ToLower().Contains("argument"))
             {
                 Points -= 2;
+                System.Console.WriteLine($"{CurrentPrompt.Description}");
+                System.Console.WriteLine($"Brownie Points: {Points}");
+                Quit();
+            }
+            if (CurrentPrompt.Description.ToLower().Contains("playing!"))
+            {
+                Points += 4;
                 System.Console.WriteLine($"{CurrentPrompt.Description}");
                 System.Console.WriteLine($"Brownie Points: {Points}");
                 Quit();
@@ -242,10 +263,17 @@ Quit            (Quit Game)                           ~
             {
                 return i.Name.ToLower() == itemName.ToLower();
             });
-            CurrentUser.Inventory.Remove(item);
-            Prompt newnew = new Prompt("You use her words against her, taking your out and winning the argument. But at what cost?");
-            CurrentPrompt = newnew;
-            Check();
+            if (itemName == "out" && CurrentUser.Inventory.Contains(item))
+            {
+                CurrentUser.Inventory.Remove(item);
+                Prompt newnew = new Prompt("You use her words against her, taking your out and winning the argument. But at what cost?");
+                CurrentPrompt = newnew;
+                Check();
+            }
+            else
+            {
+                System.Console.WriteLine(CurrentPrompt.Description);
+            }
         }
 
     }
