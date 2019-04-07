@@ -1,0 +1,11 @@
+C:\source\codeworks\argument\obj\Debug\netcoreapp2.2\argument.csprojAssemblyReference.cache
+C:\source\codeworks\argument\obj\Debug\netcoreapp2.2\argument.csproj.CoreCompileInputs.cache
+C:\source\codeworks\argument\obj\Debug\netcoreapp2.2\argument.AssemblyInfoInputs.cache
+C:\source\codeworks\argument\obj\Debug\netcoreapp2.2\argument.AssemblyInfo.cs
+C:\source\codeworks\argument\bin\Debug\netcoreapp2.2\argument.deps.json
+C:\source\codeworks\argument\bin\Debug\netcoreapp2.2\argument.runtimeconfig.json
+C:\source\codeworks\argument\bin\Debug\netcoreapp2.2\argument.runtimeconfig.dev.json
+C:\source\codeworks\argument\bin\Debug\netcoreapp2.2\argument.dll
+C:\source\codeworks\argument\bin\Debug\netcoreapp2.2\argument.pdb
+C:\source\codeworks\argument\obj\Debug\netcoreapp2.2\argument.dll
+C:\source\codeworks\argument\obj\Debug\netcoreapp2.2\argument.pdb
