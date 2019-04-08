@@ -204,7 +204,7 @@ namespace argument
                     TakeItem(option);
                     break;
                 default:
-                    System.Console.WriteLine("Try again!");
+                    System.Console.WriteLine("Invalid command. Try again! (type \"help\"");
                     break;
             }
         }
@@ -226,11 +226,18 @@ Quit            (Quit Game)                           ~
 
         public void Inventory()
         {
-
-            CurrentUser.Inventory.ForEach(i =>
+            if (CurrentUser.Inventory.Count != 0)
             {
-                System.Console.WriteLine($"{i.Name}");
-            });
+
+                CurrentUser.Inventory.ForEach(i =>
+                {
+                    System.Console.WriteLine($"{i.Name}");
+                });
+            }
+            else
+            {
+                System.Console.WriteLine("Your inventory is empty. The Missus holds the advantage.");
+            }
 
         }
 
@@ -251,10 +258,19 @@ Quit            (Quit Game)                           ~
            {
                return i.Name.ToLower() == itemName.ToLower();
            });
-            Console.Clear();
-            CurrentUser.Inventory.Add(item);
-            CurrentPrompt.Items.Remove(item);
-            System.Console.WriteLine($"You took the {item.Name}.");
+            if (CurrentPrompt.Items.Contains(item))
+            {
+
+                Console.Clear();
+                CurrentUser.Inventory.Add(item);
+                CurrentPrompt.Items.Remove(item);
+                System.Console.WriteLine($"You took the {item.Name}.");
+            }
+            else
+            {
+                System.Console.WriteLine("There's nothing to take!");
+                System.Console.WriteLine(CurrentPrompt.Description);
+            }
         }
 
         public void UseItem(string itemName)
