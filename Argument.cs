@@ -25,7 +25,7 @@ namespace argument
             Prompt nine = new Prompt("You say \"Something snarky, I assume.\" The Missus: Oh, like THAT you mean?\n The Missus has given you an out..");
             Prompt ten = new Prompt("The Missus: I felt like a chicken sandwich today so I ordered one in,\nand Becky had the NERVE to tell me I should've stuck with a salad. Can you believe that?!");
             Prompt eleven = new Prompt("The author would like to inform you, the plot has become too complex to continue. In honor of George R.R Martin,\n the next chapter in this story will be released in 7 years, give or take. Thanks for playing!");
-
+            Prompt twelve = new Prompt("You refuse to take the Out. Wise Choice. You have listened to The Missus successfully, showing you care and being adequately invovled. YOU WIN!");
 
 
             Item Out = new Item("Out", "\"No Strings Attached\"");
@@ -58,6 +58,11 @@ namespace argument
             eight.Choices.Add(Response.question, eleven);
             eight.Choices.Add(Response.statement, eleven);
             eight.Choices.Add(Response.silence, eleven);
+
+            nine.Choices.Add(Response.listen, twelve);
+            nine.Choices.Add(Response.question, eleven);
+            nine.Choices.Add(Response.statement, eleven);
+            nine.Choices.Add(Response.silence, eleven);
 
             ten.Choices.Add(Response.listen, eleven);
             ten.Choices.Add(Response.question, eleven);
@@ -124,6 +129,7 @@ namespace argument
             }
             if (CurrentPrompt.Description.ToLower().Contains("win"))
             {
+                Points += 10;
                 System.Console.WriteLine($"{CurrentPrompt.Description}");
                 System.Console.WriteLine($"Brownie Points: {Points}");
                 Quit();
